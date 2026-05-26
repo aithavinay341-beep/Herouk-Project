@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="practice_suite">
+    <test name="practice_test">
+        <classes>
+            <class name="com.automation.practice_testng.Test1"/>
+        </classes>
+    </test>
+</suite>
