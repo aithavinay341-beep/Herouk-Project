@@ -31,3 +31,4 @@ com\automation\tests\herokuapp\Challenging_DOM.class
 com\automation\tests\herokuapp\Floating_menu.class
 com\automation\tests\Login_Script_Two.class
 com\automation\tests\herokuapp\Floating_Menuone.class
+com\automation\practice_testng\Test2_Annotations.class
