@@ -23,5 +23,9 @@ public class Test1 {
     public void print() {
         System.out.println("Vinay print");
     }
+    @Test(priority=4)
+    public void print4() {
+        System.out.println("Vinay print 4");
+    }
 
 }
