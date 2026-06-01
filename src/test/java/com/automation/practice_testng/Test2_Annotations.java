@@ -1,19 +1,32 @@
 package com.automation.practice_testng;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class Test2_Annotations {
 
-    WebDriver driver = new ChromeDriver();
-    @BeforeMethod
+    WebDriver driver;
+    
+    
+    @BeforeClass
     public void beforeMethod() {
+        ChromeOptions options = new ChromeOptions();
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        prefs.put("profile.password_manager_leak_detection", false);
+        options.setExperimentalOption("prefs", prefs);
+
+        driver = new ChromeDriver(options);
         driver.get("https://www.saucedemo.com/?utm_source=chatgpt.com");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
@@ -36,10 +49,10 @@ public class Test2_Annotations {
         driver.findElement(By.xpath("//button[@id='finish']")).click();
     }
 
-    @AfterMethod 
+    @AfterClass
     public void afterMethod() {
-        driver.findElement(By.xpath("//button[@id='react-burger-menu-btn']")).click();
-        driver.findElement(By.cssSelector("#logout_sidebar_link")).click();
+        // driver.findElement(By.xpath("//button[@id='react-burger-menu-btn']")).click();
+        // driver.findElement(By.cssSelector("#logout_sidebar_link")).click();
         driver.quit();
     }
 }
