@@ -31,8 +31,8 @@ public class Test3_Assertions {
         System.out.println("Soft Assertions");
         System.out.println("Vinay");
         System.out.println("Sai");
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(10, 20);
+        SoftAssert softAssert = new SoftAssert(); // soft assertions are object oriented and we need to create an object of soft assert class to use it
+        softAssert.assertEquals(10, 20); //Used the objet to call the assertion method and it will not stop the execution of the test case if any assertion is failed
         System.out.println("Vinay 1");
 
 }
