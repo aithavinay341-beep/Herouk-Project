@@ -5,20 +5,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Test2_Annotations {
+public class Test4_dependencym {
 
-    WebDriver driver;
-    
-    
-    @BeforeClass
-    public void beforeMethod() {
+    ChromeDriver driver;
+
+    @Test (groups = "sanity")
+    public void login() {
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
@@ -29,30 +25,23 @@ public class Test2_Annotations {
         driver = new ChromeDriver(options);
         driver.get("https://www.saucedemo.com/?utm_source=chatgpt.com");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
         driver.manage().window().maximize();
         driver.findElement(By.xpath("//input[@id='user-name']")).sendKeys("standard_user");
         driver.findElement(By.xpath("//input[@id='password']")).sendKeys("secret_sauce");
         driver.findElement(By.xpath("//input[@id='login-button']")).click();
-}
-
-    @Test (groups = "sanity")
-    public void test1() {
-        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bike-light")).click();
-        driver.findElement(By.cssSelector(".shopping_cart_link")).click();
-        System.out.println("Added to the card successfully");
-        driver.findElement(By.xpath("//button[@id='checkout']")).click();
-        driver.findElement(By.xpath("//input[@id='first-name']")).sendKeys("Vinay");
-        driver.findElement(By.xpath("//input[@id='last-name']")).sendKeys("Aitha");
-        driver.findElement(By.xpath("//input[@id='postal-code']")).sendKeys("502381");
-        driver.findElement(By.xpath("//input[@id='continue']")).click();
-        driver.findElement(By.xpath("//button[@id='finish']")).click();
+        }
+    
+    @Test(dependsOnMethods = "login", groups = "sanity")
+    public void addbagToCart() {
+        driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-onesie']")).click();
+        driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).click();
     }
-
-    @AfterClass
-    public void afterMethod() {
-        // driver.findElement(By.xpath("//button[@id='react-burger-menu-btn']")).click();
-        // driver.findElement(By.cssSelector("#logout_sidebar_link")).click();
+    @Test(dependsOnMethods = "addbagToCart", groups = "sanity")
+    public void checkout() {
+        driver.findElement(By.xpath("//button[@id='checkout']")).click();
+    }
+    @Test(dependsOnMethods = "checkout", groups = "sanity")
+    public void quitbrowser() {
         driver.quit();
     }
 }

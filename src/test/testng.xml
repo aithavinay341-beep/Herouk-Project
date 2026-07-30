@@ -5,6 +5,8 @@
         <classes>
             <class name="com.automation.practice_testng.Test1"/>
             <class name="com.automation.practice_testng.Test2_Annotations"/>
+            <class name="com.automation.practice_testng.Test4_dependencym"/>
+            <class name="com.automation.practice_testng.Test5_Data_Providers"/>
         </classes>
     </test>
 </suite>
