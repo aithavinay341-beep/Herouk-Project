@@ -1,0 +1,13 @@
+debrajbhal.testng-testsuite-runner@0.0.2
+eamodio.gitlens@18.3.0
+esbenp.prettier-vscode@12.4.0
+oracle.oracle-java@26.0.0
+redhat.java@1.55.0
+ritwickdey.liveserver@5.7.10
+usernamehw.errorlens@3.28.0
+vscjava.migrate-java-to-azure@1.22.0
+vscjava.vscode-gradle@3.18.0
+vscjava.vscode-java-debug@0.59.0
+vscjava.vscode-java-dependency@0.27.6
+vscjava.vscode-java-pack@0.31.1
+vscjava.vscode-maven@0.45.3
